@@ -47,19 +47,19 @@ This structured database enhances operational efficiency, financial tracking and
 Provide the following SQL scripts:  
 - **Create Tables Script** - The SQL script for creating the database tables is available in the repository:  
 
-📜 **[View `create_tables.sql`](Phase1/scripts/FleetManagementCreateTable.sql)**  
+📜 **[View `create_tables.sql`](Phase1/Scripts/FleetManagementCreateTable.sql)**  
 
 - **Insert Data Script** - The SQL script for insert data to the database tables is available in the repository:  
 
-📜 **[View `insert_tables.sql`](Phase1/scripts/FleetManagementInsertTables.sql)**  
+📜 **[View `insert_tables.sql`](Phase1/Scripts/FleetManagementInsertTables.sql)**  
  
 - **Drop Tables Script** - The SQL script for droping all tables is available in the repository:  
 
-📜 **[View `drop_tables.sql`](Phase1/scripts/FleetManagementDropTable.sql)**  
+📜 **[View `drop_tables.sql`](Phase1/Scripts/FleetManagementDropTable.sql)**  
 
 - **Select All Data Script**  - The SQL script for selectAll tables is available in the repository:  
 
-📜 **[View `selectAll_tables.sql`](Phase1/scripts/FleetManagementSelectAll.sql)**  
+📜 **[View `selectAll_tables.sql`](Phase1/Scripts/FleetManagementSelectAll.sql)**  
   
 ###  Data  
 ####  First tool: using [mockaro](https://www.mockaroo.com/) to create csv file
