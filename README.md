@@ -75,6 +75,3 @@ Provide the following SQL scripts:
 
 [Enter Backup folder](Phase1/Backup)
 
-
-
-## Phase 2: Integration 
