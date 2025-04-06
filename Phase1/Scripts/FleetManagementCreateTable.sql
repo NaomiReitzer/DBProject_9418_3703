@@ -27,21 +27,26 @@ CREATE TABLE IF NOT EXISTS BusOperation (
 
 CREATE TABLE IF NOT EXISTS Maintenance (
   maintenance_type VARCHAR(30) NOT NULL,
+  who_maintained VARCHAR(50) NOT NULL,
+  next_due_date DATE NOT NULL,
   operation_id INT NOT NULL,
   PRIMARY KEY (operation_id),
   FOREIGN KEY (operation_id) REFERENCES BusOperation(operation_id)
 );
 
 CREATE TABLE IF NOT EXISTS Inspection (
-  inspection_name VARCHAR(30) NOT NULL,
+  inspection_type VARCHAR(30) NOT NULL,
   inspection_result VARCHAR(15) NOT NULL,
+  inspector_name VARCHAR(50) NOT NULL,
   operation_id INT NOT NULL,
   PRIMARY KEY (operation_id),
   FOREIGN KEY (operation_id) REFERENCES BusOperation(operation_id)
 );
 
 CREATE TABLE IF NOT EXISTS FuelLog (
-  fuel_amount_liters FLOAT NOT NULL,
+  start_fuel_amount_liters FLOAT NOT NULL,
+  station_name VARCHAR(100) NOT NULL,
+  fuel_added_liters FLOAT NOT NULL,
   operation_id INT NOT NULL,
   PRIMARY KEY (operation_id),
   FOREIGN KEY (operation_id) REFERENCES BusOperation(operation_id)
