@@ -110,13 +110,97 @@ results for  the command `SELECT COUNT(*) FROM Insurance;`:
 
 ### SELECT Queries (8)
 
-1. עלות כוללת של פעולות לכל אוטובוס בשנת 2024
+1. עלות כוללת של פעולות לכל אוטובוס בשנת 2025
 
 <pre>
-SELECT B.plate_number, EXTRACT(YEAR FROM O.operation_date) AS year, SUM(O.operation_cost) AS total_cost
+SELECT B.bus_id, EXTRACT(YEAR FROM O.operation_date) AS year, SUM(O.operation_cost) AS total_cost
 FROM BusOperation O
 JOIN Bus B ON B.bus_id = O.bus_id
-WHERE EXTRACT(YEAR FROM O.operation_date) = 2024
-GROUP BY B.plate_number, year
+WHERE EXTRACT(YEAR FROM O.operation_date) = 2025
+GROUP BY B.bus_id, year
 ORDER BY total_cost DESC;
 </pre>
+
+![image](Phase2/SelectQueriesImages/Select1.png)
+
+2. ביטוחים שפג תוקפם החודש
+<pre>
+SELECT insurance_id, bus_id, insurance_start_date, end_date
+FROM Insurance
+WHERE EXTRACT(MONTH FROM end_date) = EXTRACT(MONTH FROM CURRENT_DATE)
+  AND EXTRACT(YEAR FROM end_date) = EXTRACT(YEAR FROM CURRENT_DATE);
+</pre>
+
+![image](Phase2/SelectQueriesImages/Select2.png)
+
+3. ממוצע עלות פעולות לאוטובוסים לא פעילים
+<pre>
+SELECT B.bus_id, AVG(O.operation_cost) AS avg_cost
+FROM Bus B
+JOIN BusOperation O ON B.bus_id = O.bus_id
+WHERE B.bus_status = 'Inactive'
+GROUP BY B.bus_id;
+</pre>
+
+![image](Phase2/SelectQueriesImages/Select3.png)
+
+4. חמש פעולות התדלוק עם כמות הדלק הגבוהה ביותר
+<pre>
+SELECT B.bus_id, F.station_name, F.fuel_added_liters, O.operation_date
+FROM FuelLog F
+JOIN BusOperation O ON O.operation_id = F.operation_id
+JOIN Bus B ON B.bus_id = O.bus_id
+ORDER BY F.fuel_added_liters DESC
+LIMIT 5;
+</pre>
+
+![image](Phase2/SelectQueriesImages/select4.png)
+
+5. אוטובוסים עם יותר מ-3 ביקורות
+<pre>
+SELECT bus_id
+FROM Bus
+WHERE bus_id IN (
+  SELECT B.bus_id
+  FROM Bus B
+  JOIN BusOperation O ON B.bus_id = O.bus_id
+  JOIN Inspection I ON O.operation_id = I.operation_id
+  GROUP BY B.bus_id
+  HAVING COUNT(*) > 3
+);
+</pre>
+
+![image](Phase2/SelectQueriesImages/select5.png)
+
+6. סך הביקורות לכל אוטובוס לפי שנה ותוצאה
+<pre>
+SELECT B.bus_id, EXTRACT(YEAR FROM O.operation_date) AS year, I.inspection_result, COUNT(*) AS total_inspections
+FROM Inspection I
+JOIN BusOperation O ON O.operation_id = I.operation_id
+JOIN Bus B ON B.bus_id = O.bus_id
+GROUP BY B.bus_id, year, I.inspection_result
+ORDER BY year, B.bus_id;
+</pre>
+
+![image](Phase2/SelectQueriesImages/select6.png)
+
+7. תחזוקות שבוצעו בין ינואר למאי
+<pre>
+SELECT B.bus_id, O.operation_date, M.maintenance_type
+FROM BusOperation O
+JOIN Bus B ON B.bus_id = O.bus_id
+JOIN Maintenance M ON M.operation_id = O.operation_id
+WHERE EXTRACT(MONTH FROM O.operation_date) BETWEEN 1 AND 5;
+</pre>
+
+![image](Phase2/SelectQueriesImages/select7.png)
+
+8. מספר תחזוקות עתידיות לכל סוג טיפול
+<pre>
+SELECT maintenance_type, COUNT(*) AS upcoming_maintenances
+FROM Maintenance
+WHERE next_due_date > CURRENT_DATE
+GROUP BY maintenance_type;
+</pre>
+
+![image](Phase2/SelectQueriesImages/select8.png)
