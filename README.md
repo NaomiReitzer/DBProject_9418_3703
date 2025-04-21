@@ -12,7 +12,6 @@ Naomi Reitzer and Sara Koskas
   - [SQL Scripts](#sql-scripts)  
   - [Data](#data)
   - [Backup](#backup)
-- [Phase 2: Integration](#phase-2-integration)  
 
 ## Phase 1: Design and Build the Database  
 
@@ -83,6 +82,8 @@ results for  the command `SELECT COUNT(*) FROM Insurance;`:
 ####  Third tool: using python to create csv file
 #####  Entering a data to BusOperation, FuelLog, Inspection and Maintenance tables
 📜[View `generate_data.py`](Phase1/MockDataScript/generate_data.py)
+[Enter CSV files folder](Phase1/MockedData)
+
 ![image](Phase1/UploadDataImages/BusOperation1.png)
 ![image](Phase1/UploadDataImages/BusOperation2.png)
 ![image](Phase1/UploadDataImages/FuelLog1.png)
