@@ -1,15 +1,15 @@
 CREATE TABLE IF NOT EXISTS Bus (
   bus_id INT NOT NULL,
-  plate_number VARCHAR(15) NOT NULL,
+  plate_number VARCHAR(15) NOT NULL UNIQUE,
   model VARCHAR(30) NOT NULL,
-  capacity NUMERIC(3) NOT NULL,
-  status VARCHAR(15) NOT NULL,
+  capacity NUMERIC(3) NOT NULL CHECK (capacity > 0),
+  bus_status VARCHAR(30) CHECK (bus_status IN ('Active', 'Inactive')),
   PRIMARY KEY (bus_id)
 );
 
 CREATE TABLE IF NOT EXISTS Insurance (
   insurance_id INT NOT NULL,
-  start_date DATE NOT NULL,
+  insurance_start_date DATE NOT NULL,
   end_date DATE NOT NULL,
   bus_id INT NOT NULL,
   PRIMARY KEY (insurance_id),

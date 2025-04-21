@@ -63,18 +63,36 @@ Provide the following SQL scripts:
   
 ###  Data  
 ####  First tool: using [mockaro](https://www.mockaroo.com/) to create csv file
-
+#####  Entering a data to Bus table
+-  bus id scope 1-400
+📜[View `Bus.csv`](Phase1/MockedData/Bus.csv)
+![image](Phase1/UploadDataImages/bus1.png)
+![image](Phase1/UploadDataImages/bus2.png)
+results for  the command `SELECT COUNT(*) FROM Bus;`:
+<br>
+![image](Phase1/UploadDataImages/bus3.png)
 
 ####  Second tool: using [generatedata](https://generatedata.com/generator). to create csv file 
-
+#####  Entering a data to Insurance table
+- insurance id scope 1-400
+📜[View `Insurance.csv`](Phase1/MockedData/Insurance.csv)
+![image](Phase1/UploadDataImages/Insurance1.png)
+![image](Phase1/UploadDataImages/Insurance2.png)
+results for  the command `SELECT COUNT(*) FROM Insurance;`:
+![image](Phase1/UploadDataImages/Insurance3.png)
 
 ####  Third tool: using python to create csv file
+#####  Entering a data to BusOperation, FuelLog, Inspection and Maintenance tables
+📜[View `generate_data.py`](Phase1/MockDataScript/generate_data.py)
+![image](Phase1/UploadDataImages/BusOperation1.png)
+![image](Phase1/UploadDataImages/BusOperation2.png)
+![image](Phase1/UploadDataImages/FuelLog1.png)
+![image](Phase1/UploadDataImages/FuelLog2.png)
+![image](Phase1/UploadDataImages/Inspection1.png)
+![image](Phase1/UploadDataImages/Inspection2.png)
+![image](Phase1/UploadDataImages/Maintenance1.png)
+![image](Phase1/UploadDataImages/Maintenance2.png)
 
 ### Backup 
 -   backups files are kept with the date and hour of the backup:  
-
 [Enter Backup folder](Phase1/Backup)
-
-
-
-## Phase 2: Integration 
