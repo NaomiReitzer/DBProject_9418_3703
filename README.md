@@ -13,6 +13,14 @@ Naomi Reitzer and Sara Koskas
   - [Data](#data)
   - [Backup](#backup)
 
+- [Phase 2: Queries and constraints](#phase-2-queries-and-constraints)
+  - [SELECT Queries (8)](#-select-queries-8)  
+  - [DELETE Queries (3)](#-delete-queries-3)  
+  - [UPDATE Queries (3)](#-update-queries-3)  
+  - [Constraints Added (`ALTER TABLE`)](#-constraints-added-alter-table)  
+  - [Backup](#-backup)  
+
+
 ## Phase 1: Design and Build the Database  
 
 ### Introduction
@@ -96,3 +104,19 @@ results for  the command `SELECT COUNT(*) FROM Insurance;`:
 ### Backup 
 -   backups files are kept with the date and hour of the backup:  
 [Enter Backup folder](Phase1/Backup)
+
+
+## Phase 2: Queries and constraints
+
+### SELECT Queries (8)
+
+1. עלות כוללת של פעולות לכל אוטובוס בשנת 2024
+
+<pre>
+SELECT B.plate_number, EXTRACT(YEAR FROM O.operation_date) AS year, SUM(O.operation_cost) AS total_cost
+FROM BusOperation O
+JOIN Bus B ON B.bus_id = O.bus_id
+WHERE EXTRACT(YEAR FROM O.operation_date) = 2024
+GROUP BY B.plate_number, year
+ORDER BY total_cost DESC;
+</pre>
