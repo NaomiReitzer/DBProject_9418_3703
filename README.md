@@ -14,11 +14,11 @@ Naomi Reitzer and Sara Koskas
   - [Backup](#backup)
 
 - [Phase 2: Queries and constraints](#phase-2-queries-and-constraints)
-  - [SELECT Queries (8)](#-select-queries-8)  
-  - [DELETE Queries (3)](#-delete-queries-3)  
-  - [UPDATE Queries (3)](#-update-queries-3)  
-  - [Constraints Added (`ALTER TABLE`)](#-constraints-added-alter-table)  
-  - [Backup](#-backup)  
+  - [SELECT Queries (8)](#select-queries-8)  
+  - [DELETE Queries (3)](#delete-queries-3)  
+  - [UPDATE Queries (3)](#update-queries-3)  
+  - [Constraints](#constraints-added-alter-table)  
+  - [Backup](#backup)  
 
 
 ## Phase 1: Design and Build the Database  
@@ -108,6 +108,8 @@ results for  the command `SELECT COUNT(*) FROM Insurance;`:
 
 ## Phase 2: Queries and constraints
 
+📜[View `Queries.sql`](Phase2/scripts/Queries.sql)
+
 ### SELECT Queries (8)
 
 1. עלות כוללת של פעולות לכל אוטובוס בשנת 2025
@@ -121,7 +123,7 @@ GROUP BY B.bus_id, year
 ORDER BY total_cost DESC;
 </pre>
 
-![image](Phase2/SelectQueriesImages/Select1.png)
+![image](Phase2/QueriesImages/Select1.png)
 
 2. ביטוחים שפג תוקפם החודש
 <pre>
@@ -131,7 +133,7 @@ WHERE EXTRACT(MONTH FROM end_date) = EXTRACT(MONTH FROM CURRENT_DATE)
   AND EXTRACT(YEAR FROM end_date) = EXTRACT(YEAR FROM CURRENT_DATE);
 </pre>
 
-![image](Phase2/SelectQueriesImages/Select2.png)
+![image](Phase2/QueriesImages/Select2.png)
 
 3. ממוצע עלות פעולות לאוטובוסים לא פעילים
 <pre>
@@ -142,7 +144,7 @@ WHERE B.bus_status = 'Inactive'
 GROUP BY B.bus_id;
 </pre>
 
-![image](Phase2/SelectQueriesImages/Select3.png)
+![image](Phase2/QueriesImages/Select3.png)
 
 4. חמש פעולות התדלוק עם כמות הדלק הגבוהה ביותר
 <pre>
@@ -154,11 +156,11 @@ ORDER BY F.fuel_added_liters DESC
 LIMIT 5;
 </pre>
 
-![image](Phase2/SelectQueriesImages/select4.png)
+![image](Phase2/QueriesImages/select4.png)
 
 5. אוטובוסים עם יותר מ-3 ביקורות
 <pre>
-SELECT bus_id
+SELECT bus_id, plate_number
 FROM Bus
 WHERE bus_id IN (
   SELECT B.bus_id
@@ -170,7 +172,7 @@ WHERE bus_id IN (
 );
 </pre>
 
-![image](Phase2/SelectQueriesImages/select5.png)
+![image](Phase2/QueriesImages/select5.png)
 
 6. סך הביקורות לכל אוטובוס לפי שנה ותוצאה
 <pre>
@@ -182,7 +184,7 @@ GROUP BY B.bus_id, year, I.inspection_result
 ORDER BY year, B.bus_id;
 </pre>
 
-![image](Phase2/SelectQueriesImages/select6.png)
+![image](Phase2/QueriesImages/select6.png)
 
 7. תחזוקות שבוצעו בין ינואר למאי
 <pre>
@@ -193,7 +195,7 @@ JOIN Maintenance M ON M.operation_id = O.operation_id
 WHERE EXTRACT(MONTH FROM O.operation_date) BETWEEN 1 AND 5;
 </pre>
 
-![image](Phase2/SelectQueriesImages/select7.png)
+![image](Phase2/QueriesImages/select7.png)
 
 8. מספר תחזוקות עתידיות לכל סוג טיפול
 <pre>
@@ -203,4 +205,109 @@ WHERE next_due_date > CURRENT_DATE
 GROUP BY maintenance_type;
 </pre>
 
-![image](Phase2/SelectQueriesImages/select8.png)
+![image](Phase2/QueriesImages/select8.png)
+
+
+### DELETE Queries (3)
+
+1. מחק ביטוחים שפג תוקפם
+<pre>
+DELETE FROM Insurance
+WHERE end_date < CURRENT_DATE;
+</pre>
+
+![image](Phase2/QueriesImages/delete1.png)
+
+2. מחק פעולות ללא עלות
+<pre>
+DELETE FROM BusOperation
+WHERE operation_cost = 0;
+</pre>
+
+![image](Phase2/QueriesImages/delete2.png)
+
+3. מחק אוטובוסים ללא פעולות
+<pre>
+DELETE FROM Insurance
+WHERE bus_id NOT IN (
+  SELECT DISTINCT bus_id FROM BusOperation
+);
+DELETE FROM Bus
+WHERE bus_id NOT IN (
+  SELECT DISTINCT bus_id FROM BusOperation
+);
+</pre>
+
+![image](Phase2/QueriesImages/delete3.png)
+
+### UPDATE Queries (3)
+
+1. סמן ביטוחים שפג תוקפם בסטטוס 'לא פעיל' בטבלת האוטובוסים
+<pre>
+UPDATE Bus
+SET bus_status = 'Inactive'
+WHERE bus_id IN (
+  SELECT bus_id FROM Insurance
+  WHERE end_date < CURRENT_DATE
+);
+</pre>
+
+![image](Phase2/QueriesImages/update1.png)
+
+2. הגדל את עלות הפעולה ב-10% עבור פעולות עתירות דלק (מעל 50 ליטר)
+<pre>
+UPDATE BusOperation
+SET operation_cost = operation_cost * 1.10
+WHERE operation_id IN (
+  SELECT operation_id FROM FuelLog
+  WHERE fuel_added_liters > 50
+);
+</pre>
+
+![image](Phase2/QueriesImages/update2.png)
+
+3. עדכון שם תחנת דלק
+<pre>
+UPDATE FuelLog
+SET station_name = 'Yang Hill'
+WHERE station_name = 'Yang-Hill';
+</pre>
+
+![image](Phase2/QueriesImages/update3.png)
+
+
+### Constraints
+
+📜[View `Constraints.sql`](Phase2/scripts/Constraints.sql)
+
+1. ברירת מחדל לסטטוס אוטובוס
+<pre>
+ALTER TABLE Bus
+ALTER COLUMN bus_status SET DEFAULT 'Active';
+</pre>
+
+![image](Phase2/QueriesImages/con1_1.png)
+![image](Phase2/QueriesImages/con1_2.png)
+
+2. לבדוק שעלות פעולה גדולה מאפס
+<pre>
+ALTER TABLE BusOperation
+ADD CONSTRAINT check_operation_cost_positive CHECK (operation_cost > 0);
+</pre>
+
+![image](Phase2/QueriesImages/con2_1.png)
+![image](Phase2/QueriesImages/con2_2.png)
+
+3. לא לאפשר שדה תחנת דלק ריק
+<pre>
+ALTER TABLE FuelLog
+ALTER COLUMN station_name SET NOT NULL;
+</pre>
+
+![image](Phase2/QueriesImages/con3_1.png)
+![image](Phase2/QueriesImages/con3_2.png)
+
+
+### Backup
+-   backups files are kept with the date and hour of the backup:  
+[Enter Backup folder](Phase2/Backup)
