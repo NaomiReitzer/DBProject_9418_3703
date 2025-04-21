@@ -69,7 +69,6 @@ Provide the following SQL scripts:
 ![image](Phase1/UploadDataImages/bus1.png)
 ![image](Phase1/UploadDataImages/bus2.png)
 results for  the command `SELECT COUNT(*) FROM Bus;`:
-<br>
 ![image](Phase1/UploadDataImages/bus3.png)
 
 ####  Second tool: using [generatedata](https://generatedata.com/generator). to create csv file 
