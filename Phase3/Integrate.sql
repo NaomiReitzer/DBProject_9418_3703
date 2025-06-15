@@ -1,0 +1,3 @@
+ALTER TABLE Shift 
+ADD CONSTRAINT FK_Shift_Bus 
+FOREIGN KEY (bus_id) REFERENCES Bus(bus_id);

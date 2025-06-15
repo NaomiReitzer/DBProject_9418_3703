@@ -20,6 +20,15 @@ Naomi Reitzer and Sara Koskas
   - [Constraints](#constraints-added-alter-table)  
   - [Backup](#backup)  
 
+- [Phase 3: Integration and Views](#phase-3-integration-and-views)  
+  - [Drivers DSD](#drivers-dsd)  
+  - [Drivers ERD](#drivers-erd)  
+  - [Integrated ERD](#integrated-erd)  
+  - [Integrated DSD](#integrated-dsd)  
+  - [Intergation Commands](#integration-commands)
+  - [Views and Queries Commands](#views-and-queries-commands)
+  - [Backup](#backup)
+
 
 ## Phase 1: Design and Build the Database  
 
@@ -311,3 +320,35 @@ ALTER COLUMN station_name SET NOT NULL;
 ### Backup
 -   backups files are kept with the date and hour of the backup:  
 [Enter Backup folder](Phase2/Backup)
+
+
+## Phase 3: Integration and Views
+
+### Drivers DSD
+![Drivers DSD Diagram](Phase3/DriversDSD.png)
+
+### Drivers ERD
+![Drivers ERD Diagram](Phase3/DriversERD.png)
+
+### Integrated ERD
+![Drivers and Bus ERD Diagram](Phase3/DriversBusERD.png)
+
+### Integrated DSD
+![Drivers and Bus DSD Diagram](Phase3/DriversBusDSD.png)
+
+### Intergation Commands
+📜 **[View `Integrate.sql`](Phase3/Integrate.sql)**
+![image](Phase3/Intergrate1.png)
+![image](Phase3/Intergrate2.png)
+
+### Views and Queries Commands
+📜 **[View `Views.sql`](Phase3/Views.sql)**
+![image](Phase3/View1.png)
+![image](Phase3/Query1.png)
+![image](Phase3/Query2.png)
+![image](Phase3/View2.png)
+![image](Phase3/Query3.png)
+![image](Phase3/Query4.png)
+
+### Backup
+[Enter Backup folder](Phase3/Backup)
