@@ -1,0 +1,68 @@
+NOTICE:  =======================================
+NOTICE:  DRIVER SCHEDULE MANAGEMENT SYSTEM
+NOTICE:  Started: 2025-06-15 14:38:37.692353+00
+NOTICE:  =======================================
+NOTICE:  
+NOTICE:  STEP 1: Current Week Schedule Review
+NOTICE:  -----------------------------------
+NOTICE:  Active drivers with schedules: 5
+NOTICE:  Driver: יוסי כהן | Shifts: 0 | Hours: 0 | Status: NO_SHIFTS
+NOTICE:  Driver: מרים לוי | Shifts: 0 | Hours: 0 | Status: NO_SHIFTS
+NOTICE:  Driver: דוד אברהם | Shifts: 0 | Hours: 0 | Status: NO_SHIFTS
+NOTICE:  Driver: רחל יוסף | Shifts: 0 | Hours: 0 | Status: NO_SHIFTS
+NOTICE:  Driver: משה דוד | Shifts: 0 | Hours: 0 | Status: NO_SHIFTS
+NOTICE:  
+NOTICE:  STEP 2: Next Week Shift Assignment
+NOTICE:  ---------------------------------
+NOTICE:  Assigning shifts for week starting: 2025-06-22
+NOTICE:  Shift validation passed: Driver 1 assigned to Bus 1 on 2025-06-22 from 06:00:00 to 14:00:00
+NOTICE:  Shift assigned: יוסי כהן on 2025-06-22 from 06:00:00 to 14:00:00
+NOTICE:  Shift validated: Driver 1 assigned to Bus 1 on 2025-06-22
+NOTICE:  Shift validation passed: Driver 1 assigned to Bus 1 on 2025-06-23 from 06:00:00 to 14:00:00
+NOTICE:  Shift assigned: יוסי כהן on 2025-06-23 from 06:00:00 to 14:00:00
+NOTICE:  Shift validated: Driver 1 assigned to Bus 1 on 2025-06-23
+NOTICE:  Shift validation passed: Driver 1 assigned to Bus 1 on 2025-06-24 from 06:00:00 to 14:00:00
+NOTICE:  Shift assigned: יוסי כהן on 2025-06-24 from 06:00:00 to 14:00:00
+NOTICE:  Shift validated: Driver 1 assigned to Bus 1 on 2025-06-24
+NOTICE:  Shift validation passed: Driver 1 assigned to Bus 1 on 2025-06-25 from 06:00:00 to 14:00:00
+NOTICE:  Shift assigned: יוסי כהן on 2025-06-25 from 06:00:00 to 14:00:00
+NOTICE:  Shift validated: Driver 1 assigned to Bus 1 on 2025-06-25
+NOTICE:  Shift validation passed: Driver 1 assigned to Bus 1 on 2025-06-26 from 06:00:00 to 14:00:00
+NOTICE:  Shift assigned: יוסי כהן on 2025-06-26 from 06:00:00 to 14:00:00
+NOTICE:  Shift validated: Driver 1 assigned to Bus 1 on 2025-06-26
+NOTICE:  Shift validation passed: Driver 2 assigned to Bus 1 on 2025-06-22 from 14:00:00 to 22:00:00
+NOTICE:  Shift assigned: מרים לוי on 2025-06-22 from 14:00:00 to 22:00:00
+NOTICE:  Shift validated: Driver 2 assigned to Bus 1 on 2025-06-22
+NOTICE:  Shift validation passed: Driver 2 assigned to Bus 1 on 2025-06-23 from 14:00:00 to 22:00:00
+NOTICE:  Shift assigned: מרים לוי on 2025-06-23 from 14:00:00 to 22:00:00
+NOTICE:  Shift validated: Driver 2 assigned to Bus 1 on 2025-06-23
+NOTICE:  Shift validation passed: Driver 2 assigned to Bus 1 on 2025-06-24 from 14:00:00 to 22:00:00
+NOTICE:  Shift assigned: מרים לוי on 2025-06-24 from 14:00:00 to 22:00:00
+NOTICE:  Shift validated: Driver 2 assigned to Bus 1 on 2025-06-24
+NOTICE:  Shift validation passed: Driver 2 assigned to Bus 1 on 2025-06-25 from 14:00:00 to 22:00:00
+NOTICE:  Shift assigned: מרים לוי on 2025-06-25 from 14:00:00 to 22:00:00
+NOTICE:  Shift validated: Driver 2 assigned to Bus 1 on 2025-06-25
+NOTICE:  Shift validation passed: Driver 2 assigned to Bus 1 on 2025-06-26 from 14:00:00 to 22:00:00
+NOTICE:  Shift assigned: מרים לוי on 2025-06-26 from 14:00:00 to 22:00:00
+NOTICE:  Shift validated: Driver 2 assigned to Bus 1 on 2025-06-26
+NOTICE:  Error assigning shifts to driver 3: Shift validation error: End time must be after start time. Start: 22:00:00, End: 06:00:00
+NOTICE:  Error assigning shifts to driver 4: Shift validation error: End time must be after start time. Start: 22:00:00, End: 06:00:00
+NOTICE:  Error assigning shifts to driver 5: Shift validation error: End time must be after start time. Start: 22:00:00, End: 06:00:00
+NOTICE:  Shift assignment completed. Total assignments: 10
+NOTICE:  Drivers assigned: יוסי כהן, מרים לוי
+NOTICE:  
+NOTICE:  STEP 3: Schedule Management Summary
+NOTICE:  ----------------------------------
+NOTICE:  Total Active Drivers: 5
+NOTICE:  Heavy Workload Drivers: 0
+NOTICE:  Drivers with No Shifts: 5
+NOTICE:  New Assignments Made: 10
+NOTICE:  RECOMMENDATION: 5 drivers need shift assignments
+NOTICE:  SUCCESS: Good shift coverage achieved
+NOTICE:  
+NOTICE:  =======================================
+NOTICE:  SCHEDULE MANAGEMENT COMPLETED
+NOTICE:  =======================================
+DO
+
+Query returned successfully in 192 msec.

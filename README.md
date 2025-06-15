@@ -29,6 +29,11 @@ Naomi Reitzer and Sara Koskas
   - [Views and Queries Commands](#views-and-queries-commands)
   - [Backup](#backup)
 
+- [Phase 4: Programming](#phase-4-programming)
+  - [Table Changes](#table-changes)  
+  - [First Program](#first-program)  
+  - [Second Program](#second-program)  
+  - [Backup](#backup)
 
 ## Phase 1: Design and Build the Database  
 
@@ -352,3 +357,32 @@ ALTER COLUMN station_name SET NOT NULL;
 
 ### Backup
 [Enter Backup folder](Phase3/Backup)
+
+
+## Phase 4: Programming
+
+### Table Changes
+📜 **[View 'AlterTable.sql'](Phase4/AlterTable.sql)**
+
+### First Program
+#### Bus Operations Program
+
+📜 **[View code](Phase4/1-BusOperationsSystem.sql)**
+
+התוכנית מציגה לוח תחזוקה, מעבדת 3 פעילויות לדוגמה ומציגה סיכום פעילות חודשית של האוטובוסים.
+
+![Program Run](Phase4/Prog1Run.png)
+📜 **[View Program output](Phase4/Program1Output.txt)**
+
+### Second Program
+#### Driver Management Program
+
+📜 **[View code](Phase4/2-DriverManagementSystem.sql)**
+
+התוכנית מבצעת זרימת עבודה מלאה: קוראת ללוח הזמנים הנוכחי, מקצה משמרות חדשות לשבוע הבא, ומציגה דוח סיכום עם המלצות ניהוליות על בסיס הנתונים.
+
+![Program Run](Phase4/Prog2Run.png)
+📜 **[View Program output](Phase4/Program2Output.txt)**
+
+### Backup
+[Enter Backup folder](Phase4/Backup)
