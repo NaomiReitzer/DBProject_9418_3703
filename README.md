@@ -35,6 +35,12 @@ Naomi Reitzer and Sara Koskas
   - [Second Program](#second-program)  
   - [Backup](#backup)
 
+- [Phase 5: Application](#phase-5-application)
+  - [Installation Instructions](#installation-instructions)
+  - [Development Tools and Technologies](#development-tools-and-technologies)
+  - [Application Screenshots](#application-screenshots)
+  - [How to Run the Application](#how-to-run-the-application)
+
 ## Phase 1: Design and Build the Database  
 
 ### Introduction
@@ -386,3 +392,119 @@ ALTER COLUMN station_name SET NOT NULL;
 
 ### Backup
 [Enter Backup folder](Phase4/Backup)
+
+
+## Phase 5: Application
+
+### Installation Instructions
+
+#### דרישות מערכת
+- Python 3.7 או גרסה חדשה יותר
+- PostgreSQL מותקן ופועל
+
+#### שלבי התקנה
+
+1. **שכפול/הורדת הפרויקט**
+   ```bash
+   cd Phase5
+   ```
+
+2. **התקנת חבילות Python הנדרשות**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **הגדרת מסד הנתונים**
+   - ודא שמסד הנתונים PostgreSQL פועל
+   - עדכן את פרטי החיבור בקובץ `database_connection.py`:
+     ```python
+     def connect(self, host="localhost", port="5432", database="mydatabase", user="naomi", password="naomi01"):
+     ```
+
+4. **הרצת האפליקציה**
+   ```bash
+   python main.py
+   ```
+
+### Development Tools and Technologies
+
+#### כלי הפיתוח והטכנולוגיות שבהם השתמשנו:
+
+**1. שפת התכנות - Python**
+- בחרנו ב-Python בשל פשטותה וספרייה עשירה של כלים לפיתוח ממשקי משתמש
+- תומכת חיבור מצוין למסדי נתונים PostgreSQL
+
+**2. ספרייה לממשק המשתמש - Tkinter**
+- ספרייה מובנית של Python לפיתוח ממשקי משתמש גרפיים
+- מאפשרת יצירת חלונות, כפתורים, טבלאות וטפסים בקלות
+- תומכת בעיצוב מותאם אישית וצבעים
+
+**3. חיבור למסד הנתונים - psycopg2**
+- מתאם מתקדם לחיבור Python עם PostgreSQL
+- מספק אבטחה מפני SQL injection
+- תומך בעסקאות ושאילתות מורכבות
+
+**4. עיצוב חזותי - ttkthemes**
+- הוספת נושאים ועיצובים מודרניים לממשק
+- שיפור חוויית המשתמש
+
+**5. עיבוד תמונות - Pillow**
+- טיפול בקבצי תמונה במידת הצורך
+- הוספת אייקונים וגרפיקה לממשק
+
+#### ארכיטקטורת האפליקציה:
+
+**מודולריות:**
+- כל חלון ותפקוד נמצא בקובץ נפרד
+- `main.py` - נקודת הכניסה הראשית
+- `login_window.py` - חלון התחברות
+- `main_application.py` - התפריט הראשי
+- `database_connection.py` - ניהול חיבורים למסד הנתונים
+- מודולים נפרדים לכל תפקוד: ניהול אוטובוסים, נהגים, משמרות ופעולות
+
+### Application Screenshots
+
+#### 1. חלון התחברות
+![Login Window](Phase5/Screenshots/login_window.png)
+
+*חלון התחברות למערכת עם אימות מול מסד הנתונים*
+
+#### 2. תפריט ראשי
+![Main Menu](Phase5/Screenshots/main_menu.png)
+*התפריט הראשי עם כל אפשרויות המערכת*
+
+#### 3. ניהול אוטובוסים
+![Bus Management](Phase5/Screenshots/bus_management.png)
+*ממשק ניהול אוטובוסים - הוספה, עדכון ומחיקה*
+
+#### 4. ניהול נהגים
+![Driver Management](Phase5/Screenshots/driver_management.png)
+*ממשק ניהול נהגים עם פרטים אישיים ומקצועיים*
+
+#### 5. ניהול משמרות
+![Shift Management](Phase5/Screenshots/shift_management.png)
+*ממשק תכנון וניהול משמרות עבודה*
+
+#### 6. ניהול פעולות אוטובוסים
+![Bus Operations](Phase5/Screenshots/bus_operations.png)
+*ממשק ניהול פעולות כגון תחזוקה, דלק וביקורות*
+
+#### 7. שאילתות, פונקציות ופרוצדורות
+![Functions](Phase5/Screenshots/Functions.png)
+![Procedurs](Phase5/Screenshots/Procedurs.png)
+![Queries](Phase5/Screenshots/Queries.png)
+*ממשק הרצת שאילתות, פונקציות ופרוצדורות*
+
+### How to Run the Application
+
+#### הפעלה בסיסית:
+1. פתח terminal/command prompt
+2. נווט לתיקיית הפרויקט
+3. הרץ: `python main.py`
+
+#### זרימת השימוש:
+1. **התחברות:** הזן שם משתמש וסיסמה
+2. **תפריט ראשי:** בחר את התפקוד הרצוי
+3. **ניהול נתונים:** הוסף, ערוך או מחק רשומות
+4. **הרצת שאילתות:** צפה בדוחות ונתונים
+5. **יציאה:** סגור את האפליקציה בבטחה
